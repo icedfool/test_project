@@ -1,11 +1,14 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import i18n from './i18n'
+import { createI18n } from 'vue-i18n'
+import { loadLocaleMessages } from './i18n'
+console.log(loadLocaleMessages())
 
-//Vue.config.productionTip = false
+const i18n = createI18n({
+    legacy: false,
+    locale: process.env.VUE_APP_I18N_LOCALE || 'cn',
+    fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || 'cn',
+    messages: loadLocaleMessages()
+})
 
-/* new Vue({
-    i18n,
-    render: h => h(App)
-}).$mount('#app') */
 createApp(App).use(i18n).mount('#app')

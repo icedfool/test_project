@@ -1,13 +1,24 @@
 <template>
   <div id = "app">
-    <p>{{ $t('main.welcome' , {company: 'Nerf Or Nothing'}) }}</p>
+    <p>{{ t('main.welcome' , {company: 'Nerf Or Nothing'}) }}</p>
   </div>
 </template>
 
 <script>
+import { useI18n } from 'vue-i18n'
 export default {
   name: 'App',
   components: {
+  },
+  setup() {
+    const { t } = useI18n({
+      //inheritLocale: true,
+      //useScope: 'local'
+    })
+
+    // Something todo ..
+
+    return { t }
   }
 }
 </script>
